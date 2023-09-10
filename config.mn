@@ -1,0 +1,5 @@
+hostA ip route add 10.76.5.0/24 via 10.58.3.3
+hostC ip route add 10.58.3.0/24 via 10.76.5.1
+container1 ip route add default via 172.22.0.1
+hostA iptables -t nat -A POSTROUTING -s 172.22.0.0/24 -j MASQUERADE
+hostB sysctl net.ipv4.ip_forward=1
